@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>HabitRPG</title>
     <link href='//fonts.googleapis.com/css?family=Lato:300,300italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="shared/css/index.css">
     <style>
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
             display: none;
@@ -23,12 +22,13 @@
             <ul class="nav site-nav">
                 <li class="flyout">
                     <h1 class="task-action-btn tile solid user-reporter">
-                        {{user.auth.local.username}}
+                        <div ng-show="user.auth.local.username">{{user.auth.local.username}}</div>
+                        <div ng-hide="user.auth.local.username">Anonymous</div>
                     </h1>
 
                     <ul class="flyout-content nav stacked">
                         <li>
-                            <a class="task-action-btn tile solid" href="#">Options</a>
+                            <a class="task-action-btn tile solid" ng-click="showMenu()">Options</a>
                         </li>
                         <li>
                             <a class="task-action-btn tile solid" href="" ng-click="logout()">Logout</a>
@@ -39,7 +39,7 @@
         </div>
         <div ng-controller="CharacterCtrl">
         <header class="site-header" role="banner">
-            <div class="herobox-wrap main-herobox">
+            <div class="herobox-wrap main-herobox" ng-click="showMenu()">
 
                     <figure class="herobox"
                             data-name="{{user.auth.local.username}}"

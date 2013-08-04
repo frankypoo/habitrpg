@@ -19,7 +19,7 @@
 											<li ng-repeat="task in tasks()   | filter:{type:'habit'}" class="task habit {{getClass(task.value)}}" ng-class="{'habit-wide':task.up && task.down}">
                             <div class="task-meta-controls">
                                 <a rel="toolitp" ng-click="editTask(task)"><i class="icon-pencil"></i></a>
-                                <a rel="toolitp"><i class="icon-trash"></i></a>
+                                <a rel="toolitp"><i class="icon-trash" ng-click="deleteTask(task)"></i></a>
                                 <a rel="toolitp"><i class="icon-signal"></i></a>
                                 <a rel="toolitp" ng-show="task.notes"><i class="icon-comment"></i></a>
                             </div>
@@ -89,7 +89,7 @@
                         <li ng-repeat="task in tasks() | filter:{type:'daily'}" class="task habit {{getClass(task.value)}}">
                             <div class="task-meta-controls">
                                 <a rel="toolitp"><i class="icon-pencil" ng-click="editTask(task)"></i></a>
-                                <a rel="toolitp"><i class="icon-trash"></i></a>
+                                <a rel="toolitp"><i class="icon-trash" ng-click="deleteTask(task)"></i></a>
                                 <a rel="toolitp"><i class="icon-signal"></i></a>
                                 <a rel="toolitp"><i class="icon-comment" ng-show="task.notes"></i></a>
                             </div>
@@ -157,11 +157,11 @@
                         <input class="addtask-btn" type="submit" value="＋">
                     </form>
                     <hr>
-                    <ul class="habits ui-sortable">
+                    <ul class="habits ui-sortable" sort>
                         <li ng-repeat="task in tasks() | filter:{type:'todo'}" class="task habit {{getClass(task.value)}}">
                             <div class="task-meta-controls">
                                 <a rel="toolitp"><i class="icon-pencil" ng-click="editTask(task)"></i></a>
-                                <a rel="toolitp"><i class="icon-trash"></i></a>
+                                <a rel="toolitp"><i class="icon-trash" ng-click="deleteTask(task)"></i></a>
                                 <a rel="toolitp"><i class="icon-comment" ng-show="task.notes"></i></a>
                             </div>
                             <div class="task-controls task-primary">
@@ -227,11 +227,11 @@
                     <h2 class="task-column_title">Rewards</h2>
                     <form id="new-habit" class="addtask-form form-inline new-task-form " data-task-type="habit" onsubmit="return false"><span class="addtask-field"><input id="$2y" value="" type="text" placeholder="New Habit"></span><input class="addtask-btn" type="submit" value="＋"></form>
                     <hr>
-                    <ul class="habits ui-sortable">
+                    <ul class="habits ui-sortable" sort>
                         <li ng-repeat="task in tasks() | filter:{type:'reward'}" class="task reward">
                             <div class="task-meta-controls">
-                                <a rel="toolitp"><i class="icon-pencil" ng-click="editTask(task)"></i></a>
-                                <a rel="toolitp"><i class="icon-trash"></i></a>
+                                <a rel="toolitp" data-original-title="Edit"><i class="icon-pencil" ng-click="editTask(task)"></i></a>
+                                <a rel="toolitp" data-original-title="Delete"><i class="icon-trash" ng-click="deleteTask(task)"></i></a>
                                 <a rel="toolitp"><i class="icon-comment" ng-show="task.notes"></i></a>
                             </div>
                             <div class="task-controls task-primary">

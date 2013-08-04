@@ -279,5 +279,20 @@ habitrpg.controller('TasksCtrl', function TasksCtrl($scope, $rootScope, $locatio
         }
     }
 
+    $scope.deleteTask = function(task) {
+        var info = confirm('Are you sure you want to delete this task ?')
+
+        if (info == true) {
+
+            _.each(User.user[task.type + 's'], function(el, index) {
+                if (el.id == task.id) {
+                    User.user[task.type + 's'].splice(index, 1)
+                }
+            })
+
+            User.log({op:'delTask', task:task})
+        }
+    }
+
 
 });
