@@ -18,6 +18,7 @@ habitrpg.controller('AuthCtrl', function AuthCtrl($scope, Facebook, LocalAuth, U
         if (!err) {
             alert('Login succesfull!');
             $location.path("/habit");
+            User.fetch()
         }
     });
 

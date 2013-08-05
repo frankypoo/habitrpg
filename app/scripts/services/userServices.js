@@ -118,6 +118,13 @@ factory('User', function($http, $location, $rootScope, $timeout) {
 
 
         };
+
+    var fetch = function() {
+        $http.post(URL, {})
+        .success(function(response) {
+            _.extend(user,response)
+        })
+    }
     var save = function() {
             localStorage.setItem(STORAGE_ID, JSON.stringify(user));
             localStorage.setItem(HABIT_MOBILE_SETTINGS, JSON.stringify(settings));
@@ -165,6 +172,7 @@ factory('User', function($http, $location, $rootScope, $timeout) {
 
 
         },
+        fetch:fetch,
         settings: settings
     };
 
@@ -189,11 +197,7 @@ factory('User', function($http, $location, $rootScope, $timeout) {
         userServices.authenticate(settings.auth.apiId, settings.auth.apiToken)
     }
 
-    $http.post(URL, {})
-        .success(function(response) {
-            _.extend(user,response)
-    })
-
+    fetch()
 
     //first we populate user with schema
     _.extend(user, schema);
