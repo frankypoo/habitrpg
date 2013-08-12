@@ -25,7 +25,7 @@ factory('User', function($http, $location, $rootScope, $timeout) {
         },
         settings = {},
         //habit mobile settings (like auth etc.) to be stored here
-        URL = 'http://127.0.0.1:3000/api/v2',
+        URL = 'https://beta.habitrpg.com/api/v1/user/batch-update',
         schema = {
             stats: {
                 gp: 0,
